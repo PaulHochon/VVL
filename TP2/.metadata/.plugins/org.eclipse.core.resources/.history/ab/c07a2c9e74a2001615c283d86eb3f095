@@ -1,0 +1,17 @@
+import junit.framework.*;
+import Code39.Code39;
+import Code39.java;
+public class TestCode39 extends TestCase{
+	
+	public void test_uni_test_chaine() throws Exception
+	{
+		assertEquals("*ABCDEFGHIJKLMNOPQRSTUVWXYZ 0123456789./-+$%*",code39("abcdefghijklmnopqrstuvwxyz 0123456789./-+$%"));
+		CU_ASSERT(!test_chaine("*ABC */AZE98..*"));
+		CU_ASSERT(!test_chaine("*aB0 r3712//*"));
+		CU_ASSERT(test_chaine("**"));
+		CU_ASSERT(!test_chaine(""));
+		CU_ASSERT(!test_chaine("78 /AB*"));
+		CU_ASSERT(test_chaine("*ABC 123 / $$$*"));
+	}
+
+}	

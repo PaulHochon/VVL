@@ -1,0 +1,23 @@
+
+public class TestCode39 {
+	void test_uni_test_chaine()
+	{
+		CU_ASSERT(test_chaine("*ABCDEFGHIJKLMNOPQRSTUVWXYZ 0123456789./-+$%*"));
+		CU_ASSERT(!test_chaine("*ABC */AZE98..*"));
+		CU_ASSERT(!test_chaine("*aB0 r3712//*"));
+		CU_ASSERT(test_chaine("**"));
+		CU_ASSERT(!test_chaine(""));
+		CU_ASSERT(!test_chaine("78 /AB*"));
+		CU_ASSERT(test_chaine("*ABC 123 / $$$*"));
+	}
+
+	void test_uni_Modulo43()
+	{
+		CU_ASSERT(!strcmp(Modulo43("*012*"),"*012*3"));
+		CU_ASSERT(!strcmp(Modulo43("*ABC*"),"*ABC*X"));
+		CU_ASSERT(!strcmp(Modulo43("**"),"**0"));
+		CU_ASSERT(!strcmp(Modulo43("*/3*"),"*/3*0"));
+		CU_ASSERT(!strcmp(Modulo43("* M*"),"* M*H"));
+	}
+
+}

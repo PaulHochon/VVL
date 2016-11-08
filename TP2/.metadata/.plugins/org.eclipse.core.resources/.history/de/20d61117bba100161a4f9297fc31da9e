@@ -1,0 +1,27 @@
+
+public class Code39 {
+	String code39(String chaine)
+	{
+		int i=0;
+		String chaine_code=new String();
+		chaine_code[i]='*';
+
+		for(i=1;i<strlen(chaine);i++)
+		{
+			if(chaine[i-1]==32 || (chaine[i-1]<=57 && chaine[i-1]>=45) || chaine[i-1]==36 || chaine[i-1]==37 || chaine[i-1]==43 || (chaine[i-1]>=97 && chaine[i-1]<=122) || (chaine[i-1]>=65 && chaine[i-1]<=90))
+			{
+				chaine_code[i]=toupper(chaine[i-1]);
+			}
+			else
+			{
+				printf("Error : Wrong character.\n");
+				exit(1);
+			}
+		}
+		chaine_code[i]=toupper(chaine[i-1]);
+		i++;
+		chaine_code[i]='*';
+		printf("fin de préparation\n");
+		return chaine_code;
+	}
+}

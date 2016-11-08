@@ -1,0 +1,72 @@
+package Code39;
+
+public class Code39 {
+	int MAX_CHAR=100;
+	
+	String code39(String chaine)
+	{
+		int i=0;
+		String chaine_code=new String();
+		chaine_code[i]='*';
+
+		for(i=1;i<strlen(chaine);i++)
+		{
+			if(chaine[i-1]==32 || (chaine[i-1]<=57 && chaine[i-1]>=45) || chaine[i-1]==36 || chaine[i-1]==37 || chaine[i-1]==43 || (chaine[i-1]>=97 && chaine[i-1]<=122) || (chaine[i-1]>=65 && chaine[i-1]<=90))
+			{
+				chaine_code[i]=toupper(chaine[i-1]);
+			}
+			else
+			{
+				printf("Error : Wrong character.\n");
+				exit(1);
+			}
+		}
+		chaine_code[i]=toupper(chaine[i-1]);
+		i++;
+		chaine_code[i]='*';
+		printf("fin de préparation\n");
+		return chaine_code;
+	}
+	
+	int test_chaine(String chaine)
+	{
+		int i,j,test=0;
+
+		String char_ok=new String("ABCDEFGHIJKLMNOPQRSTUVWXYZ 0123456789$-/.%+");
+		if (chaine.charAt(0)=='*' && chaine.charAt(chaine.length()-1)=='*')
+		{
+			for (i=1;i<chaine.length()-1;i++)
+			{
+				for (j=0;j<43;j++)
+				{
+					if (chaine.charAt(i)==char_ok.charAt(j))
+					test++;
+				}
+			}
+			if(test+2==strlen(chaine))
+			{
+				return 1;
+			}
+			else return 0;
+		}
+		else return 0;
+	}
+	
+	/*String Modulo43(String chaine)
+	{
+		int sum=0,i,j;
+		String char_ok=new String("0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ-. $/+%");
+
+		for (i=0;i<chaine.length();i++)
+		{
+			for(j=0;j<43;j++)
+			{
+				if(chaine.charAt(i)==char_ok.charAt(j)) sum+=j;
+			}
+		}
+		chaine+=sum%43;
+
+		return chaine;
+	}*/
+}
+
